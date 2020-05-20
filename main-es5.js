@@ -623,6 +623,9 @@ var HomeComponent = /** @class */ (function () {
     };
     HomeComponent.prototype.removeItems = function () {
         this.bill.items.splice(-1, 1);
+        this.totalAmount = this.bill.items.reduce(function (sum, a) {
+            return sum + a.totalAmountWithTax;
+        }, 0).toFixed(2);
     };
     HomeComponent.prototype.logout = function () {
         this.authenticationService.logout();

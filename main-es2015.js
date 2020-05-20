@@ -601,6 +601,9 @@ let HomeComponent = class HomeComponent {
     }
     removeItems() {
         this.bill.items.splice(-1, 1);
+        this.totalAmount = this.bill.items.reduce(function (sum, a) {
+            return sum + a.totalAmountWithTax;
+        }, 0).toFixed(2);
     }
     logout() {
         this.authenticationService.logout();
